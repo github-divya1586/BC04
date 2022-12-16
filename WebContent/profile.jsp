@@ -7,7 +7,7 @@
 <jsp:include page="common/UserHeader.jsp"></jsp:include>
 <link href="assets/css/style.css" rel="stylesheet">
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-center">
+<section id="hero" class="d-flex align-items-center" >
 
 	<div class="container">
 		<div class="row">
@@ -142,13 +142,6 @@
 
 </section>
 <!-- End Hero -->
-<div class="container"></div>
 
-
-
-<div id="preloader"></div>
-<a href="#"
-	class="back-to-top d-flex align-items-center justify-content-center"><i
-	class="bi bi-arrow-up-short"></i></a>
 
 <jsp:include page="common/footer.jsp"></jsp:include>
