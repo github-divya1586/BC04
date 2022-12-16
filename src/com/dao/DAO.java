@@ -72,15 +72,24 @@ public class DAO {
 		return rs;
 	}
 
-	public int insertUploadFile(int userId, String fname, String hashValue) throws ClassNotFoundException, SQLException {
+	public int insertUploadFile(int userId, String fname, String hashValue,String domain) throws ClassNotFoundException, SQLException {
 		
 		Connection con = DbConnection.getCon();
-		String sql = "insert into fileupload values(0,?,?,?)";
+		String sql = "insert into fileupload values(0,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, userId);
-		ps.setString(2, fname);
-		ps.setString(3, hashValue);
+		ps.setString(2, domain);
+		ps.setString(3, fname);
+		ps.setString(4, hashValue);
 		return ps.executeUpdate();		
+	}
+
+	public ResultSet getFiles(int userid) throws ClassNotFoundException, SQLException {
+		Connection con = DbConnection.getCon();
+		String sql = "select * from fileupload where userid="+userid ;
+		Statement st = con.createStatement();
+		ResultSet rs = st.executeQuery(sql);
+		return rs;
 	}
 
 }
