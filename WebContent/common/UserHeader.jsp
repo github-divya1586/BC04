@@ -50,22 +50,32 @@
      <br>  <br>  <br> <h2 class="logo me-auto"><a href="index.html">Blockchain Project</a></h2>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
- <%
-        RegisterModel rm= (RegisterModel)session.getAttribute("account");
-        %>
-      <nav id="navbar" class="navbar">
+
+<%if(session.getAttribute("account")==null){%>
+				
+	  <h1>your session expired</h1>
+			<% 	response.sendRedirect("login.jsp");
+			}else{
+				RegisterModel rm= (RegisterModel)session.getAttribute("account");%>
+				    <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="profile.jsp?userpage=profile&&userid=<%=rm.getUserid()%>">Profile</a></li>
           <li><a class="nav-link scrollto" href="profile.jsp?userpage=upload&&userid=<%=rm.getUserid()%>">Research paper</a></li>
           <li><a class="nav-link   scrollto" href="profile.jsp?userpage=view&&userid=<%=rm.getUserid()%>">Uploaded Files</a></li>
-          <li><a class="nav-link scrollto" href="#">Logout</a></li>
+          <li><a class="nav-link scrollto" href="login.jsp?userstatus=logout">Logout</a></li>
           
          
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>	
         
       </nav><!-- .navbar -->
+				 
+				 
+		<% 	}
+				%>
+			
 
+   
     </div>
   </header><!-- End Header -->

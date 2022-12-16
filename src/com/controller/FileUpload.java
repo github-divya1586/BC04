@@ -32,7 +32,7 @@ public class FileUpload extends HttpServlet {
 
 		String fname = req.getParameter("fileName");
 		String userId = req.getParameter("userId");
-		String domain=req.getParameter("domain");
+		String domain = req.getParameter("domain");
 
 		Part part = req.getPart("file");
 
@@ -65,7 +65,7 @@ public class FileUpload extends HttpServlet {
 			CryptoUtilsTest.encrptAlgoritham("shyamshyamshyamm", targetFile, ecncryptFile);
 			targetFile.delete();
 
-			boolean f = uks.insertFile(Integer.parseInt(userId), fname, hashValue,domain);
+			boolean f = uks.insertFile(Integer.parseInt(userId), fname, hashValue, domain);
 			if (f) {
 				String info = "<div class=\"alert alert-success wrap-input100\">\n"
 						+ "                        <p style=\"font-family: Ubuntu-Bold; font-size: 18px; margin: 0.25em 0; text-align: center\">\n"
@@ -77,8 +77,6 @@ public class FileUpload extends HttpServlet {
 			} else {
 
 			}
-
-			
 
 		} catch (Exception e) {
 			String alert = "<div class=\"alert alert-success wrap-input100\">\n"

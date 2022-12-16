@@ -28,6 +28,12 @@
                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login Here</p>
                      ${info}
                      ${alert}
+                     
+                    <%
+                    if(request.getParameter("userstatus")!=null){
+                    	session.invalidate();
+                    }
+                    %>
                 <form class="mx-1 mx-md-4" action="login" method="post">
 
                  

@@ -6,6 +6,9 @@ public class FileModel {
 	int UserId;
 	String fileName;
 	String hashKey;
+	String domain;
+	
+	
 	public int getFileId() {
 		return FileId;
 	}
@@ -29,6 +32,12 @@ public class FileModel {
 	}
 	public void setHashKey(String hashKey) {
 		this.hashKey = hashKey;
+	}
+	public String getDomain() {
+		return domain;
+	}
+	public void setDomain(String domain) {
+		this.domain = domain;
 	}
 	
 	

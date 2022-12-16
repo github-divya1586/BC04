@@ -112,9 +112,11 @@ public class UploadKycService {
 		while (rs.next()) {
 
 			FileModel fm = new FileModel();
+			fm.setFileId(rs.getInt(1));
 			fm.setUserId(rs.getInt(2));
-			fm.setFileName(rs.getString(3));
-			fm.setHashKey(rs.getString(4));
+			fm.setDomain(rs.getString(3));
+			fm.setFileName(rs.getString(4));
+			fm.setHashKey(rs.getString(5));
 			al.add(fm);
 
 		}
