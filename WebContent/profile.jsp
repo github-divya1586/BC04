@@ -8,7 +8,9 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-      <% if(request.getParameter("userpage").equalsIgnoreCase("profile"))
+      <% 
+      if(request.getParameter("userpage")!=null){
+      if(request.getParameter("userpage").equalsIgnoreCase("profile"))
       {%>
     	  <table class="table" style="color:#fff;">
  <tbody>
@@ -29,16 +31,25 @@
 
 </table>
     	  
-    	<%}  
+    	<%}  }
     	  %>  
     	  
-    	   <% if(request.getParameter("userpage").equalsIgnoreCase("upload"))
-      {%>
+    	   <% 
+    	   if(request.getParameter("userpage")!=null){
+    	   if(request.getParameter("userpage").equalsIgnoreCase("upload"))
+    		 
+      {
+    		   String userId=request.getParameter("userid");
+      %>
+     
     	 <p style="color:#FFF" class="myFont">Welcome To The Upload Page</p>
     	 <form action="upload" method="post" enctype="multipart/form-data">
+    	 <input type="hidden" value=<%=userId%> name="userId"/>
+    	 <input type="text" name="fileName" class="form-control" placeholder="Enter the file Name" required></input><br/>
     	 <input type="file" name="file" class="form-control"></input>
     	 <br/>
     	 <select name="domain" class="form-select" aria-label="Default select example">
+					<option>--select Domain---</option>
 					<option>Cloud Computing</option>
 					<option>Data Mining</option>
 					<option>Network</option>
@@ -46,8 +57,30 @@
 				</select><br/>
 		<input type="submit" value="submit" class="btn btn-success">
 		</form>
-    	<%}  
-    	  %>  
+    	<%} }else{%>
+    		${alert}
+    	      ${info}
+    	<%}
+    	  %> 
+    	  
+    	    <% 
+    	   if(request.getParameter("userpage")!=null){
+    	   if(request.getParameter("userpage").equalsIgnoreCase("view"))
+      {%>
+     
+    	 <p style="color:#FFF" class="myFont">Your Files</p>
+    	 <table>
+    	 <tr>
+    	 <td>FileName</td>
+    	 <td>date</td>
+    	 </tr>
+    	 </table>
+    	
+    	<%} }else{%>
+    		<%-- ${alert}
+    	      ${info} --%>
+    	<%}
+    	  %>
          
          
         </div>

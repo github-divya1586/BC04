@@ -15,6 +15,7 @@ import java.util.List;
 import com.configurations.AppConfig;
 import com.dao.DAO;
 import com.model.KycModel;
+import com.model.RegisterModel;
 
 public class UploadKycService {
 
@@ -73,5 +74,41 @@ public class UploadKycService {
 
         return Base64.getEncoder().encodeToString(imageBytes);
     }
+    
+    
+   public int uploadFile(int userid, String fileName,String hashkey) {
+	   
+	   return 0;
+   }
+   
+   public RegisterModel getUserDetails(int userId) throws ClassNotFoundException, SQLException {
+	   
+	   ResultSet rs=dao.getUserDetails(userId);
+	   if(rs.next()) {
+		   	return new RegisterModel(rs.getInt(1),
+			rs.getString(2),
+			rs.getString(3),
+			rs.getString(5),
+			rs.getString(4)
+			);
+		   
+	   }else {
+		   return null;
+	   }
+	
+	   
+   }
+
+public boolean insertFile(int userId, String fname, String hashValue) throws ClassNotFoundException, SQLException {
+	
+	int i=dao.insertUploadFile(userId,fname,hashValue);
+	
+	if(i!=-1) {
+		return true;
+	}else {
+		return false;
+	}
+	
+}
 
 }

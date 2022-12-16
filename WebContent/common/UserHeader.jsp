@@ -58,8 +58,8 @@
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="profile.jsp?userpage=profile&&userid=<%=rm.getUserid()%>">Profile</a></li>
           <li><a class="nav-link scrollto" href="profile.jsp?userpage=upload&&userid=<%=rm.getUserid()%>">Research paper</a></li>
-          <li><a class="nav-link   scrollto" href="triggedmanager.jsp">Uploaded Files</a></li>
-          <li><a class="nav-link scrollto" href="ethereum.jsp">Logout</a></li>
+          <li><a class="nav-link   scrollto" href="profile.jsp?userpage=view&&userid=<%=rm.getUserid()%>">Uploaded Files</a></li>
+          <li><a class="nav-link scrollto" href="#">Logout</a></li>
           
          
         </ul>

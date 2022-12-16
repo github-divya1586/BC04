@@ -9,6 +9,19 @@ public class RegisterModel {
 	String mobile;
 	
 	
+	
+	public RegisterModel() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public RegisterModel(int userid, String name, String emailid, String password, String mobile) {
+		super();
+		this.userid = userid;
+		this.name = name;
+		this.emailid = emailid;
+		this.password = password;
+		this.mobile = mobile;
+	}
 	public int getUserid() {
 		return userid;
 	}
