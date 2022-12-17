@@ -30,6 +30,13 @@ public class LoginController extends HttpServlet {
 		String emailid=req.getParameter("emailid");
 		String password=req.getParameter("password");
 		
+		if(emailid.equalsIgnoreCase("admin@gmail.com") && password.equalsIgnoreCase("admin")) {
+		
+		 req.setAttribute("admin", "admin");
+	     req.getRequestDispatcher("adminhome.jsp").forward(req, resp);
+			
+		}else {
+		
 		LoginService lc=new LoginService();
 		int userStatus=lc.userLogin(emailid, password);
 		
@@ -40,7 +47,7 @@ public class LoginController extends HttpServlet {
 				 session.setAttribute("account", rm);
 				 String s= userStatus==2?"sql":"nosql";
 				if (s.equalsIgnoreCase("sql")) {
-				 req.setAttribute("sql", "SQL INJECTION ATTACK");}
+					 req.setAttribute("sql", "SQL INJECTION ATTACK");}
 				
 				 req.setAttribute("account", rm);
 			     req.getRequestDispatcher("index.jsp").forward(req, resp);
@@ -57,7 +64,7 @@ public class LoginController extends HttpServlet {
 		req.setAttribute("alert", alert);
         req.getRequestDispatcher("login.jsp").forward(req, resp);
 		}
-
+		}
 	}
 
 }
