@@ -10,6 +10,7 @@
           <%
         RegisterModel rm= (RegisterModel)session.getAttribute("account");
         %>
+        <h3 style="color: #FF5733">${sql}</h3>
         <h3 style="color: #000">welcome : <%=rm.getName() %></h3>
           <center><h1>Systematic Review Of Security Vulnerabilities In Ethereum Blockchain Smart Contract</h1></center>
          

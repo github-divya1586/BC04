@@ -31,13 +31,17 @@ public class LoginController extends HttpServlet {
 		String password=req.getParameter("password");
 		
 		LoginService lc=new LoginService();
-		boolean userStatus=lc.userLogin(emailid, password);
+		int userStatus=lc.userLogin(emailid, password);
 		
-		if(userStatus) {
+		if(userStatus==1 || userStatus==2) {
 			try {
 				RegisterModel rm=lc.getUserDetails(emailid);
 				 HttpSession session = req.getSession();
 				 session.setAttribute("account", rm);
+				 String s= userStatus==2?"sql":"nosql";
+				if (s.equalsIgnoreCase("sql")) {
+				 req.setAttribute("sql", "SQL INJECTION ATTACK");}
+				
 				 req.setAttribute("account", rm);
 			     req.getRequestDispatcher("index.jsp").forward(req, resp);
 			} catch (ClassNotFoundException | SQLException | MyExcetpion e) {

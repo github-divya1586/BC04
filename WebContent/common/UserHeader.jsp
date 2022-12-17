@@ -56,13 +56,47 @@
 	  <h1>your session expired</h1>
 			<% 	response.sendRedirect("login.jsp");
 			}else{
+				String active=request.getParameter("userpage");
+				if(active==null){
+					active="home";
+				}
 				RegisterModel rm= (RegisterModel)session.getAttribute("account");%>
 				    <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="profile.jsp?userpage=profile&&userid=<%=rm.getUserid()%>">Profile</a></li>
-          <li><a class="nav-link scrollto" href="profile.jsp?userpage=upload&&userid=<%=rm.getUserid()%>">Research paper</a></li>
-          <li><a class="nav-link   scrollto" href="profile.jsp?userpage=view&&userid=<%=rm.getUserid()%>">Uploaded Files</a></li>
+          
+            <%
+          if(active.equalsIgnoreCase("home")){
+        	  %>
+        	  <li><a class="nav-link scrollto active" href="index.jsp">Home</a></li>
+         <%  }else{%> 
+           <li><a class="nav-link scrollto" href="index.jsp">Home</a></li>
+         <%} %>
+          
+          <%
+          if(active.equalsIgnoreCase("profile")){
+        	  %>
+        	  <li><a class="nav-link scrollto active" href="profile.jsp?userpage=profile&&userid=<%=rm.getUserid()%>">Profile</a></li>
+         <%  }else{%> 
+           <li><a class="nav-link scrollto" href="profile.jsp?userpage=profile&&userid=<%=rm.getUserid()%>">Profile</a></li>
+         <%} %>
+         
+          <%
+          if(active.equalsIgnoreCase("upload")){
+        	  %>
+        	  <li><a class="nav-link scrollto active" href="profile.jsp?userpage=upload&&userid=<%=rm.getUserid()%>">Research paper</a></li>
+         <%  }else{%> 
+            <li><a class="nav-link scrollto" href="profile.jsp?userpage=upload&&userid=<%=rm.getUserid()%>">Research paper</a></li>
+         <%} %>
+        
+          <%
+          if(active.equalsIgnoreCase("view")){
+        	  %>
+        	  <li><a class="nav-link   scrollto active" href="profile.jsp?userpage=view&&userid=<%=rm.getUserid()%>">Uploaded Files</a></li>
+         <%  }else{%> 
+            <li><a class="nav-link   scrollto" href="profile.jsp?userpage=view&&userid=<%=rm.getUserid()%>">Uploaded Files</a></li>
+         <%} %>
+         
+         
           <li><a class="nav-link scrollto" href="login.jsp?userstatus=logout">Logout</a></li>
           
          

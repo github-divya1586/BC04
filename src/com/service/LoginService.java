@@ -12,27 +12,38 @@ public class LoginService {
 
 	LoginDAO loginDAO = new LoginDAO();
 
-	public boolean userLogin(String email, String password) {
+	public int userLogin(String email, String password) {
 
 		LoginInterface loginInterface = (useremail, userpassword) -> {
-			boolean b = false;
+			int b = 0;
 			ResultSet rs;
 			try {
+				int i=loginDAO.getAttack("Sqlinject");
+				if(i==1) {
 				rs = loginDAO.checkUser(email, password);
 				if (rs.next() == false) {
-					b = false;
+					b = 0;
 				} else {
-					b = true;
+					b = 1;
+				}
+				}else {
+					rs = loginDAO.checkUser1(email, password);
+					if (rs.next() == false) {
+						b = 0;
+					} else {
+						b = 2;
+					}
+					
 				}
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return b;
-
+		
+return b;
 		};
 
-		boolean userLoginStatus = loginInterface.userLogin(email, password);
+		int userLoginStatus = loginInterface.userLogin(email, password);
 		return userLoginStatus;
 
 	}

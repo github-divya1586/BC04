@@ -5,6 +5,6 @@ import com.model.RegisterModel;
 @FunctionalInterface
 public interface LoginInterface {
 	
-	public boolean userLogin(String email, String password);
+	public int userLogin(String email, String password);
 
 }
