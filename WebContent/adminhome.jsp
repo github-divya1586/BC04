@@ -35,9 +35,7 @@
     		 <div class="row">
          <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
         
-         <h3 style="color: #FF5733"></h3>
-         <h3 style="color: #000">Smart contract</h3>
-           <center><h1>smart contract</h1></center>
+       
           
         
          </div>
