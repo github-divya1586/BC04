@@ -4,7 +4,7 @@
 <%@page import="java.util.List"%>
 <%@page import="com.model.RegisterModel"%>
 <jsp:include page="common/AdminHeader.jsp"></jsp:include>
-
+<%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
 
@@ -88,7 +88,7 @@
       
         <!-- Triggered manager -->
          <%if(request.getParameter("userpage")!=null){
-    	 if(request.getParameter("userpage").equalsIgnoreCase("trigger")){
+    	 if(request.getParameter("userpage").equalsIgnoreCase("trigger") || request.getParameter("userpage").equalsIgnoreCase("scan")){
     	 
     		  UploadKycService uks=new UploadKycService();
     		     List<FileModel> files=uks.getFiles();%>
@@ -118,9 +118,19 @@
 
 					<%}%>
 					</table>
-					<form action="" method="post">
+					<form action="ScanServlet" method="post">
 					<input type="submit" value="Analyze Files" class="btn btn-primary"/>
 					</form>
+					
+					<br/><br/>
+					${info }
+					
+<c:forEach var="item" items="${files}">
+  <p style="color:#FFF;">${item}</p>
+ 
+</c:forEach>
+					
+					
          </div>
          <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
            <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
@@ -146,11 +156,15 @@
      ${alert }
      ${info }
      <form action="Eth" method="post">      
-      
-        <label style="color:#FFF;" class="switch">SQL Injection &nbsp;&nbsp;
-  ON<input type="checkbox" name="checkbox">
+      <div>
+      <span  style="color:#FFF;">SQL injection &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <label style="color:#FFF;" class="switch">
+
+  <input type="checkbox" name="checkbox">
   <span class="slider round"></span>
+ 
 </label>
+</div>
 <%
 if(s[0]==1){%>
 	
@@ -162,8 +176,8 @@ if(s[0]==1){%>
 
 %>
 
- 
-        <label style="color:#FFF;" class="switch">DDOS Attack &nbsp;&nbsp;
+ <span  style="color:#FFF;">DDOS Attack &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+        <label style="color:#FFF;" class="switch"> &nbsp;&nbsp;
   <input type="checkbox" name="checkbox1" >
   <span class="slider round"></span>
 </label> 
