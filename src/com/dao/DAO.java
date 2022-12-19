@@ -42,6 +42,14 @@ public class DAO {
 		ResultSet rs = st.executeQuery(sql);
 		return rs;
 	}
+	
+	public ResultSet getAllUsers() throws ClassNotFoundException, SQLException {
+		Connection con = DbConnection.getCon();
+		String sql = "select * from register";
+		Statement st = con.createStatement();
+		ResultSet rs = st.executeQuery(sql);
+		return rs;
+	}
 
 	public int insertKyc(KycModel km) throws ClassNotFoundException, SQLException {
 

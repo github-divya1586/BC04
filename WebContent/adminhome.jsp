@@ -35,7 +35,16 @@
     		 <div class="row">
          <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
         
-       
+      <table>
+     
+      <tr>
+      <td>Name</td>
+      <td>Email</td>
+      <td>Mobile</td>
+      </tr>
+  
+      </table>
+          
           
         
          </div>

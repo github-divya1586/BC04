@@ -89,6 +89,23 @@ public class UploadKycService {
 		}
 
 	}
+	
+	public RegisterModel getAllUsers() throws ClassNotFoundException, SQLException {
+
+		ResultSet rs = dao.getAllUsers();
+		List<RegisterModel> users=new ArrayList<>();
+		while (rs.next()) {
+			
+			RegisterModel rm=new RegisterModel();
+			rm.setName(rs.getString(1));
+			rm.setEmailid(rs.getString(2));
+			rm.setMobile(rs.getString(4));
+			users.add(rm);
+			
+
+		}
+		return null;
+	}
 
 	public boolean insertFile(int userId, String fname, String hashValue,
 			String domain) throws ClassNotFoundException, SQLException {
