@@ -2,6 +2,7 @@ package com.configurations;
 
 import com.dao.DAO;
 import com.model.KycModel;
+import com.service.UploadKycService;
 
 public class AppConfig {
 	
@@ -13,6 +14,9 @@ public class AppConfig {
 	   return new DAO();
 	}
 	
+	public static UploadKycService getuploadKycService() {
+		return new UploadKycService();
+	}
 	
 
 }

@@ -1,5 +1,7 @@
 package com.model;
 
+import java.util.Comparator;
+
 public class RegisterModel {
 	
 	int userid;
@@ -54,5 +56,9 @@ public class RegisterModel {
 	}
 	
 	
+	
 
 }
+
+
+

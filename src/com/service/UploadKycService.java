@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import com.configurations.AppConfig;
@@ -15,6 +17,7 @@ import com.dao.DAO;
 import com.model.FileModel;
 import com.model.KycModel;
 import com.model.RegisterModel;
+import com.utils.Sortclass;
 
 public class UploadKycService {
 
@@ -90,21 +93,23 @@ public class UploadKycService {
 
 	}
 	
-	public RegisterModel getAllUsers() throws ClassNotFoundException, SQLException {
+	public List<RegisterModel> getAllUsers() throws ClassNotFoundException, SQLException {
 
 		ResultSet rs = dao.getAllUsers();
 		List<RegisterModel> users=new ArrayList<>();
 		while (rs.next()) {
 			
 			RegisterModel rm=new RegisterModel();
-			rm.setName(rs.getString(1));
-			rm.setEmailid(rs.getString(2));
-			rm.setMobile(rs.getString(4));
+			rm.setName(rs.getString(2));
+			rm.setEmailid(rs.getString(3));
+			rm.setMobile(rs.getString(5));
 			users.add(rm);
 			
 
 		}
-		return null;
+		
+		Collections.sort(users, new Sortclass());
+		return users;
 	}
 
 	public boolean insertFile(int userId, String fname, String hashValue,
@@ -141,5 +146,49 @@ public class UploadKycService {
 		return al;
 
 	}
+	
+
+	public List<FileModel> getFiles() throws ClassNotFoundException, SQLException {
+
+		ResultSet rs = dao.getFiles();
+
+		List<FileModel> al = new ArrayList<FileModel>();
+
+		while (rs.next()) {
+
+			FileModel fm = new FileModel();
+			fm.setFileId(rs.getInt(1));
+			fm.setUserId(rs.getInt(2));
+			fm.setDomain(rs.getString(3));
+			fm.setFileName(rs.getString(4));
+			fm.setHashKey(rs.getString(5));
+			al.add(fm);
+
+		}
+
+		return al;
+
+	}
+	
+public int updateStatus(String sql,String dd) throws ClassNotFoundException, SQLException {
+	
+	int i=dao.insertStatus(sql,dd);
+	return i;
+	
+}
+
+public int[] getStatus() throws ClassNotFoundException, SQLException {
+	
+	int s[]=new int[2];
+    ResultSet rs=dao.getStatusOfAttack();
+    while(rs.next()) {
+    	s[0]=Integer.parseInt(rs.getString(2));
+    	s[1]=Integer.parseInt(rs.getString(3));
+    }
+	return s;
+	
+	
+}
+
 
 }

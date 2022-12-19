@@ -5,8 +5,10 @@ import java.security.PrivateKey;
 import java.security.PublicKey;  
 import java.security.SecureRandom;  
 import java.security.Signature;  
-import java.util.Scanner;  
+import java.util.Scanner;
+
 import javax.xml.bind.DatatypeConverter;  
+ 
 public class DigitalSignature  
 {  
 //algorithms to use sign the document  

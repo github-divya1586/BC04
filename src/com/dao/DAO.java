@@ -100,4 +100,31 @@ public class DAO {
 		return rs;
 	}
 
+	public int insertStatus(String sql, String dd) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		Connection con = DbConnection.getCon();
+		String sql1 = "update statustable set Sqlinject=?, DDos=?";
+		PreparedStatement ps=con.prepareStatement(sql1);
+		ps.setInt(1, Integer.parseInt(sql));
+		ps.setInt(2, Integer.parseInt(dd));
+		int i=ps.executeUpdate();
+		return i;
+	}
+
+	public ResultSet getStatusOfAttack() throws ClassNotFoundException, SQLException {
+		Connection con = DbConnection.getCon();
+		String sql = "select * from statustable";
+		Statement st = con.createStatement();
+		ResultSet rs = st.executeQuery(sql);
+		return rs;
+	}
+
+	public ResultSet getFiles() throws ClassNotFoundException, SQLException {
+		Connection con = DbConnection.getCon();
+		String sql = "select * from fileupload";
+		Statement st = con.createStatement();
+		ResultSet rs = st.executeQuery(sql);
+		return rs;
+	}
+
 }
