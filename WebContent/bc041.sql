@@ -50,6 +50,21 @@ CREATE TABLE `register` (
 
 insert  into `register`(`userid`,`username`,`emailid`,`password`,`mobile`) values (1,'shyam','shyam.9989@gmail.com','123456','987656767'),(2,'shyam','shyampilli@hotmail.com','123456','987656767'),(3,'shyam','sh@gmail.com','123456','9876567678'),(4,'shyam','shyam@gmail.com','123456','9876567656');
 
+/*Table structure for table `statustable` */
+
+DROP TABLE IF EXISTS `statustable`;
+
+CREATE TABLE `statustable` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Sqlinject` int(2) DEFAULT NULL,
+  `DDos` int(2) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `statustable` */
+
+insert  into `statustable`(`id`,`Sqlinject`,`DDos`) values (1,0,0);
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
